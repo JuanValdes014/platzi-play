@@ -1,5 +1,6 @@
-package com.platzi_play;
+package com.platzi_play.web.controller;
 
+import com.platzi_play.domain.service.PlatziPlayAiService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ public class HelloController {
         this.platform = platform;
     }
 
-    @GetMapping("/")
+    @GetMapping("/hello")
     public String Hello() {
         return this.aiService.generateGreeting(platform);
     }
