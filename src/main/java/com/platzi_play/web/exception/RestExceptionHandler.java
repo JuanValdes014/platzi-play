@@ -29,4 +29,11 @@ public class RestExceptionHandler {
 
         return ResponseEntity.badRequest().body(errors);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Error> handleException(Exception ex) {
+        Error error = new Error("unknown-error", ex.getMessage());
+
+        return ResponseEntity.internalServerError().body(error);
+    }
 }
