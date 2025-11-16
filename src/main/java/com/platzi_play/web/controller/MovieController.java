@@ -1,6 +1,7 @@
 package com.platzi_play.web.controller;
 
 import com.platzi_play.domain.dto.MovieDto;
+import com.platzi_play.domain.dto.UpdateMovieDto;
 import com.platzi_play.domain.service.MovieService;
 import com.platzi_play.persistence.crud.CrudMovieEntity;
 import com.platzi_play.persistence.entity.MovieEntity;
@@ -39,5 +40,10 @@ public class MovieController {
     @PostMapping
     public ResponseEntity<MovieDto> add(@RequestBody MovieDto movieDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.movieService.add(movieDto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MovieDto> update(@PathVariable long id, @RequestBody UpdateMovieDto updateMovieDto) {
+        return ResponseEntity.ok(this.movieService.update(id, updateMovieDto));
     }
 }
