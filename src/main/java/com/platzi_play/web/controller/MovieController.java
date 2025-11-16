@@ -7,6 +7,7 @@ import com.platzi_play.domain.service.MovieService;
 import com.platzi_play.domain.service.PlatziPlayAiService;
 import com.platzi_play.persistence.crud.CrudMovieEntity;
 import com.platzi_play.persistence.entity.MovieEntity;
+import jakarta.validation.Valid;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +53,7 @@ public class MovieController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MovieDto> update(@PathVariable long id, @RequestBody UpdateMovieDto updateMovieDto) {
+    public ResponseEntity<MovieDto> update(@PathVariable long id, @RequestBody @Valid UpdateMovieDto updateMovieDto) {
         return ResponseEntity.ok(this.movieService.update(id, updateMovieDto));
     }
 
